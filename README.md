@@ -134,6 +134,7 @@ $ git log -p     // -p 可看到檔案更詳細的變更內容
 # GitHub 使用方法：push, pull 實作
 ### push實作：
 新增或修改檔案後，下$ git status可以看到那些檔案是有被修改過，並沒有被新增到暫存區，下$ git add . 把資料夾下的東西都存到暫存區，在下$ git commit -m "要輸入的訊息"，在$ git push ，就可以推上github了
+![](https://i.imgur.com/bBAFaYe.png)
 
 
   
