@@ -13,12 +13,12 @@ git是一個分散式版本控制軟體，最初由林納斯·托瓦茲創作，
 
 # Git 常用指令集介紹
 ## 1. 設定自己的 Git
-### 因為每一次提交 ( commit ) 修改，都會紀錄作者的訊息，因此必須先編輯自己的 Name 以及 E-mail。
+**因為每一次提交 ( commit ) 修改，都會紀錄作者的訊息，因此必須先編輯自己的 Name 以及 E-mail。**
 ```
 $ git config --global user.name "xxxxxxx"  
 $ git config --global user.email "xxxx@xxxx"  
 ```
-### 設定完成後，可查詢設定內容
+**設定完成後，可查詢設定內容**
 ```
 $ git config --list
 ```
@@ -36,41 +36,45 @@ $ git clone https://11111@1111.git(要複製的網址)
 $ git add file.txt  // 加入file.txt
 $ git add .         // 加入所有檔案
 ```
-## 5.提交修改的檔案
-### 記得必須先執行 $ git add 將修改檔案加入版控才可以提交。
+## 5.將add的檔案unstag回去
+```
+$ git reset --<檔案名稱>
+```
+## 6.提交修改的檔案
+**記得必須先執行 $ git add 將修改檔案加入版控才可以提交。**
 ```
 $ git commit               
 $ git commit -m "修改file.txt內容"  
 // 可同時送出這次 commit 的訊息
 ```
-## 6.查詢過去 commit 紀錄
+## 7.查詢過去 commit 紀錄
 ```
 $ git log
 $ git log --stat // --stat 參數可看到詳細內容
 $ git log -p     // -p 可看到檔案更詳細的變更內容
 ```
 
-## 7.建立分支
+## 8.建立分支
 ```
 $ git branch 分支名稱
 ```
-## 8.切換分支
+## 9.切換分支
 ```
 $ git checkout 分支名稱
 ```
-## 9.合併分支
+## 10.合併分支
 ```
 $ git merge 分支名稱
 ```
-## 10.更新遠端資料至本地端
+## 11.更新遠端資料至本地端
 ```
 $ git pull
 ```
-## 11.查詢目前 Git 的狀態
+## 12.查詢目前 Git 的狀態
 ```
 $ git status
 ```
-## 12.回復到上一次提交，並取消當前提交
+## 13.回復到上一次提交，並取消當前提交
 ```
 $ git reset HEAD^ --hard
 ```
@@ -113,7 +117,7 @@ $ git merge 分支名稱
 ### 開發者要將修改檔案後的專案內容，增加為一個新的專案版本，這個動作就稱為提交（Commit）。開發者可以每次開發完一項功能，就先將新版程式碼，先提交到本機端儲存庫上，再等到多次提交後，才一次將本機端儲存庫上的專案程式碼，一次性發布（稱為Push）到GitHub網站上的雲端儲存庫。通常執行提交時會輸入提交訊息（commit message），說明這個版本做了些什麼修正。有了這些訊息記錄，專案中的開發者便可以追蹤每個版本間的更動。
 ## commit使用
 ### 1.提交修改的檔案
-### 記得必須先執行 $ git add 將修改檔案加入版控才可以提交。
+**記得必須先執行 $ git add 將修改檔案加入版控才可以提交。**
 ```
 $ git commit               
 $ git commit -m "修改file.txt內容"  
@@ -128,6 +132,39 @@ $ git log -p     // -p 可看到檔案更詳細的變更內容
 
 
 # GitHub 使用方法：push, pull 實作
+### push實作：
+新增或修改檔案後，下$ git status可以看到那些檔案是有被修改過，並沒有被新增到暫存區，下$ git add . 把資料夾下的東西都存到暫存區，在下$ git commit -m "要輸入的訊息"，在$ git push ，就可以推上github了
+
+
+  
+
+### pull實作：
+從另一個main brunch push東西上去
+![](https://i.imgur.com/aLjMgvR.png)
+更新後可以從另一個brunch pull東西下來
+![](https://i.imgur.com/DiUq2bB.png)
+
+### pull-request實作
+將修改好的檔案用命令$ git add .暫存，在使用指令$ git commit -m "檔案修改"將檔案傳到本機儲存庫，在使用$ git push將檔案發佈到GitHub的儲存庫
+![image alt](https://i.imgur.com/WDBZEaG.png "push")
+接下來就能在GitHub上看到上傳的檔案及訊息
+![image alt](https://i.imgur.com/GBKzC57.png "")
+點擊Pull requests在點擊New pull requests
+![image alt](https://i.imgur.com/H0GVkGu.png "")
+確定修改內容及發送對象，沒問題按下create pull requests
+![image alt](https://i.imgur.com/rcvRmXy.png "修改及發送")
+title是commit訊息，也可在下方輸入要告訴原作者的訊息，沒問題按下下方的create pull requests
+![image alt](https://i.imgur.com/PyM97wH.png "title")
+就能看到成功上傳了
+![image alt](https://i.imgur.com/v6Vme0X.png "title")
+原作者會收到pull requests訊息，就可以查看別人做了哪些事情
+![image alt](https://i.imgur.com/VwPyJWn.png "")
+沒問題就可以點下merge pull requests
+![image alt](https://i.imgur.com/vLve8eC.png "title")
+確定沒問題就可以點下confirm merge
+![image alt](https://i.imgur.com/Vxf82jy.png "")
+可以看到原本綠色的open變成紫色的merged
+![image alt](https://i.imgur.com/fp8VpGp.png "title")
 
 # GitFlow 介紹
 一個開發團隊可能有好幾個branch，但每個人對於分支的認知不同，造成每次commit到不同分支，大家也不知道合併要回到誰，若是都合併到master，一定會出大問題，故有了GitFlow去規範使用者。
